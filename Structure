@@ -1,0 +1,59 @@
+PART 1 — What you already did ✅
+Downloaded opencv_contrib-4.9.0 → extracted to C:\opencv_contrib-4.9.0
+Opened CMake GUI
+Set Source: C:/opencv/sources
+Set Build: C:/opencv_build_new
+Set OPENCV_EXTRA_MODULES_PATH = C:/opencv_contrib-4.9.0/modules
+Configured → Generated → Opened Project
+Built ALL_BUILD in Release x64
+Built INSTALL
+PART 2 — Find correct path (do this now)
+Open File Explorer → go to:
+Code
+Tell me what folders are inside — I need exact path for CMakeLists.txt
+PART 3 — Update your project files
+Replace these 4 files in C:\ObjectTracker\:
+CMakeLists.txt ← path depends on PART 2
+Tracker.h
+Tracker.cpp
+main.cpp
+PART 4 — Reconfigure your project in CMake
+Open CMake GUI
+Set:
+Code
+Click Configure
+Select Visual Studio 17 2022 → x64
+Click Finish
+Wait for Configuring done
+Click Generate
+Click Open Project
+PART 5 — Build your project
+Select Release and x64
+Right-click ObjectTracker → Set as Startup Project
+Press Ctrl+Shift+B
+Wait for:
+Code
+PART 6 — Run and test CSRT
+Press Ctrl+F5
+Object Tracker window opens
+Press S → draw tight box around object
+Press Enter
+CSRT tracks your object perfectly! 🎉
+PART 7 — Key controls
+Key
+Action
+S
+Select object
+1
+CSRT (most accurate)
+2
+KCF (fastest)
+3
+CamShift (color)
+R
+Reset
+Q
+Quit
+Right now just check C:\opencv_build_new\install and tell me what folders are there! ✅
+
+https://github.com/opencv/opencv/archive/refs/tags/4.9.0.zip
