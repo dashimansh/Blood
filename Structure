@@ -59,3 +59,4 @@ Right now just check C:\opencv_build_new\install and tell me what folders are th
 https://github.com/opencv/opencv/archive/refs/tags/4.9.0.zip
 
 https://github.com/opencv/opencv_contrib/archive/refs/tags/4.9.0.zip
+OPENCV_EXTRA_MODULES_PATH
