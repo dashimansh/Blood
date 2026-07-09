@@ -64,3 +64,44 @@ https://releasealert.dev/github/opencv/opencv_contrib
 
 
 https://we.tl/t-xCPbmNjY1NKVOFWG
+
+
+
+
+
+Sure — here's the same fix using CMake GUI and Windows Settings (no typing commands):
+Step 1 — Check for extra protobuf using File Explorer
+Open File Explorer, search your C: drive for a folder named protobuf
+Common places to check: C:\vcpkg, C:\Program Files, C:\Program Files (x86)
+If you find vcpkg installed, open it and see if protobuf is listed there
+Step 2 — Remove protobuf from your PATH (if found)
+Press Windows key, type "environment variables", open "Edit the system environment variables"
+Click Environment Variables button
+Under "System variables" (and "User variables"), find Path, select it, click Edit
+Look through the list for anything mentioning protobuf or vcpkg — if found, select it and click Delete
+Click OK on all windows to save
+Step 3 — Delete your old build folder
+Open File Explorer, go to C:\
+Find the build_test folder
+Right-click it → Delete
+Right-click in C:\ → New → Folder, name it build_test again
+Step 4 — Reconfigure using CMake GUI
+Open CMake (cmake-gui) from Start Menu
+In "Where is the source code" box, browse to select C:\opencv\sources
+In "Where to build the binaries" box, browse to select C:\build_test
+Click Configure
+Choose your Visual Studio version (e.g. "Visual Studio 17 2022") and platform x64, click Finish
+Once it loads the options list, use the search box at top and type each of these names, then uncheck the checkbox next to them:
+WITH_GAPI
+WITH_ADE
+WITH_PROTOBUF
+BUILD_PROTOBUF
+OPENCV_DNN_ENABLE_PROTOBUF
+Click Configure again
+Click Generate
+Step 5 — Build using Visual Studio
+Click Open Project in CMake GUI (or open C:\build_test\OpenCV.sln manually)
+Visual Studio will open
+At the top, set build mode to Release
+Right-click ALL_BUILD in Solution Explorer (right panel) → Build
+That's it — this avoids the protobuf conflict entirely by turning off the parts that need it, which you don't use anyway.
